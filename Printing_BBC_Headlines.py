@@ -24,10 +24,10 @@ world_link.click()
 
 asia_link = WebDriverWait(driver, 3).until(
     EC.presence_of_element_located((By.CSS_SELECTOR, ".gs-o-list-ui__item--flush.gel-long-primer.gs-u-display-block.gs-u-float-left.nw-c-nav__secondary-menuitem-container a[href='/news/world/asia']"))
-)
+ )
 asia_link.click()
 
-india_link = WebDriverWait(driver, 3).until(
+india_link = WebDriverWait(driver, 5).until(
     EC.presence_of_element_located((By.LINK_TEXT, "India"))
 )
 india_link.click()
