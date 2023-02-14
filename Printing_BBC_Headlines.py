@@ -32,8 +32,6 @@ india_link = WebDriverWait(driver, 5).until(
 )
 india_link.click()
 
-time.sleep(5)
-
 element1 = driver.find_element(By.XPATH, value='//*[@id="topos-component"]/div[3]/div[2]/div[1]/div/div/div/div[3]/div')
 text1 = element1.text
 
