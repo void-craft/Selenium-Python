@@ -16,7 +16,7 @@ reject_cookies.click()
 cookie_time = time.time() - start_time1
 print("Cookie Rejection time: ", cookie_time)
 
-# Locating search box and entering "Chennai", clicking enter and calculating time until result, taking screenshot of the tab
+# locates search box, enters "Chennai", clicks enter, calculates time until result and takes screenshot of the tab
 search_box = driver.find_element(by=By.NAME, value="q")
 search_box.send_keys("Chennai")
 start_time2 = time.time()
@@ -25,7 +25,7 @@ search_time = time.time() - start_time2
 print("Search time: ", search_time)
 driver.save_screenshot("Chennai_web.png")
 
-# Opening image tab, calculating time taken, taking screenshot, closing the tab
+# opens image tab, calculates time taken, takes screenshot, closes the tab
 start_time3 = time.time()
 images_link = driver.find_element(by=By.LINK_TEXT, value="Imágenes")
 images_link.send_keys(Keys.CONTROL + Keys.RETURN)
@@ -36,7 +36,7 @@ driver.save_screenshot("Chennai_images.png")
 driver.close()
 driver.switch_to.window(driver.window_handles[0])
 
-# Opening news tab, calculating time taken, taking screenshot, closing the tab
+# opens news tab, calculates time taken, takes screenshot, closes the tab
 start_time4 = time.time()
 news_link = driver.find_element(by=By.LINK_TEXT, value="Noticias")
 news_link.send_keys(Keys.CONTROL + Keys.RETURN)
@@ -48,7 +48,7 @@ driver.close()
 driver.switch_to.window(driver.window_handles[0])
 
 
-# Opening news tab, calculating time taken, taking screenshot, closing the tab
+# opens maps tab, calculates time taken, takes screenshot, closes the tab
 start_time5 = time.time()
 maps_link = driver.find_element(by=By.LINK_TEXT, value="Maps")
 maps_link.send_keys(Keys.CONTROL + Keys.RETURN)

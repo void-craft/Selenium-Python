@@ -2,8 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import time
+from selenium.webdriver.support import expected_conditions as ec
 
 chrome_options = Options()
 chrome_options.add_experimental_option('detach', True)
@@ -18,17 +17,17 @@ news_tab = driver.find_element(by=By.XPATH, value="//a[text()='News']")
 news_tab.click()
 
 world_link = WebDriverWait(driver, 5).until(
-    EC.presence_of_element_located((By.LINK_TEXT, "World"))
+    ec.presence_of_element_located((By.LINK_TEXT, "World"))
 )
 world_link.click()
 
 asia_link = WebDriverWait(driver, 3).until(
-    EC.presence_of_element_located((By.CSS_SELECTOR, ".gs-o-list-ui__item--flush.gel-long-primer.gs-u-display-block.gs-u-float-left.nw-c-nav__secondary-menuitem-container a[href='/news/world/asia']"))
+    ec.presence_of_element_located((By.CSS_SELECTOR, ".gs-o-list-ui__item--flush.gel-long-primer.gs-u-display-block.gs-u-float-left.nw-c-nav__secondary-menuitem-container a[href='/news/world/asia']"))
  )
 asia_link.click()
 
 india_link = WebDriverWait(driver, 5).until(
-    EC.presence_of_element_located((By.LINK_TEXT, "India"))
+    ec.presence_of_element_located((By.LINK_TEXT, "India"))
 )
 india_link.click()
 

@@ -23,3 +23,5 @@ text_box.send_keys(Keys.RETURN)
 #finds the image tab, clicks it
 image_tab = browser.find_element(by=By.LINK_TEXT, value="Imágenes")
 image_tab.click()
+
+browser.quit()
