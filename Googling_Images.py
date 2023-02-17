@@ -1,3 +1,4 @@
+import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
@@ -23,5 +24,10 @@ text_box.send_keys(Keys.RETURN)
 #finds the image tab, clicks it
 image_tab = browser.find_element(by=By.LINK_TEXT, value="Imágenes")
 image_tab.click()
+
+#prints the entire HTML code of the page
+print(browser.page_source)
+
+time.sleep(5)
 
 browser.quit()
