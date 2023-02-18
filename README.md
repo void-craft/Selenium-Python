@@ -1,7 +1,7 @@
 # Selenium-Python
 
 ## Description:
-This repository contains Selenium/Python projects to showcase my ability to automate tests and to perform webscraping.
+This repository contains Selenium/Python projects that automate tests and performs webscraping.
 
 ## Installation
 
