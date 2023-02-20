@@ -62,11 +62,14 @@ hover.move_to_element(hoodie2).perform()
 hoodie2_fav = hoodie2.find_element(by=By.XPATH, value='//*[@id="maincontent"]/div[3]/div[1]/div[3]/ol/li[11]/div/div/div[3]/div/div[2]/a[1]')
 hover.move_to_element(hoodie2_fav).click().perform()
 
+wait = WebDriverWait(driver, 5)
 # hovers over gear, clicks watches from the drop down
 gear = driver.find_element(by=By.LINK_TEXT, value="Gear")
 hover.move_to_element(gear).perform()
-time.sleep(2)
-watches = driver.find_element(by=By.LINK_TEXT, value="Watches")
+watches = wait.until(
+    EC.presence_of_element_located(())
+)
+    find_element(by=By.LINK_TEXT, value="Watches")
 hover.move_to_element(watches).click().perform()
 
 # hovers over an item and clicks the Add to Cart button
@@ -124,6 +127,7 @@ shorts1_color.click()
 
 # locating the Qty text box and entering "2"
 shorts1_qty = driver.find_element(by=By.ID, value="qty")
+shorts1_qty.clear()
 shorts1_qty.send_keys("2")
 
 # adding the product to cart
