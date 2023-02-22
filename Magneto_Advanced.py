@@ -80,10 +80,10 @@ driver.back()
 wait = WebDriverWait(driver, 5)
 # hovers over gear, clicks watches from the dropdown
 gear = wait.until(
-    EC.presence_of_element_located((By.LINK_TEXT, "Gear"))
+    EC.presence_of_element_located((By.ID, "ui-id-6"))
 )
 hover.move_to_element(gear).perform()
-time.sleep(2)
+time.sleep(3)
 watches = driver.find_element(by=By.LINK_TEXT, value="Watches")
 watches.click()
 # hovers over an item and clicks the Add to Cart button
@@ -182,8 +182,13 @@ zipcode = driver.find_element(by=By.XPATH, value='/html/body/div[2]/main/div[2]/
 zipcode.send_keys("33010")
 cont = driver.find_element(by=By.XPATH, value='/html/body/div[2]/main/div[2]/div/div[2]/div[4]/ol/li[2]/div/div[3]/form/div[3]/div/button/span')
 cont.click()
-time.sleep(3)
-billing_address = driver.find_element(by=By.ID, value="billing-address-same-as-shipping-checkmo")
+billing_address = wait.until(
+    EC.presence_of_element_located((By.ID, "billing-address-same-as-shipping-checkmo"))
+)
 billing_address.click()
 place_order = driver.find_element(by=By.XPATH, value='/html/body/div[3]/main/div[2]/div/div[2]/div[4]/ol/li[3]/div/form/fieldset/div[1]/div/div/div[2]/div[2]/div[4]/div/button')
 place_order.click()
+order_number = wait.until(
+    EC.presence_of_element_located((By.CLASS_NAME, "order-number"))
+)
+print(f"Your order number is: {order_number.text}")
