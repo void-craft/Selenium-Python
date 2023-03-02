@@ -3,12 +3,15 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
+# keeps the browser open
 chrome_options = Options()
 chrome_options.add_experimental_option('detach', True)
 driver = webdriver.Chrome(options=chrome_options)
 
+# opens an instance of the browser
 driver.get("https://www.saucedemo.com/")
 
+# logins using username and password
 username = driver.find_element(by=By.ID, value="user-name")
 username.click()
 username.send_keys("standard_user")
@@ -17,6 +20,7 @@ username.send_keys(Keys.TAB)
 password = driver.find_element(by=By.ID, value="password")
 password.send_keys("secret_sauce")
 password.send_keys(Keys.TAB, Keys.ENTER)
+
 
 open_backpack = driver.find_element(by=By.ID, value="item_4_title_link")
 open_backpack.click()
