@@ -17,7 +17,6 @@ driver = webdriver.Chrome(options=chrome_options)
 driver.get("https://magento.softwaretestingboard.com/")
 
 driver.maximize_window()
-
 # generate random email address
 def generate_random_email():
     random_string = ''.join(random.choices(string.ascii_lowercase, k=10))
