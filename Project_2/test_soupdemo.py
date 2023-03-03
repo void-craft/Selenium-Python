@@ -6,7 +6,6 @@ def test_soap_demo():
     from Projects.Project_2.pages.cart_page import CartPage
     from Projects.Project_2.pages.checkout_page import CheckoutPage
     from Projects.Project_2.pages.complete_page import CompletePage
-    from Projects.Project_2.pages.product_details_page import ProductDetailsPage
 
     chrome_options = Options()
     chrome_options.add_experimental_option('detach', True)
