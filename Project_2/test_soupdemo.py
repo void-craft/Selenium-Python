@@ -29,7 +29,7 @@ def test_soap_demo():
     cart_page.checkout()
 
     checkout_page = CheckoutPage(driver)
-    checkout_page.enter_information("Hema", "Priya", "33011")
+    checkout_page.enter_information("Void", "Meow", "33333")
 
     complete_page = CompletePage(driver)
     checkout_subtotal = checkout_page.get_subtotal()
@@ -38,7 +38,7 @@ def test_soap_demo():
     print(f"Displayed Subtotal {checkout_subtotal} matches the Expected Subtotal {subtotal}")
 
     checkout_total = checkout_page.get_total()
-    assert str(checkout_total) == "43.18", f"Total doesn't match. Expected: $43.18 Actual: {checkout_total}"
+    assert str(checkout_total) == "43.18", f"Total doesn't match. Expected: $43.18 Actual: $ {checkout_total}"
     print(f"Expected total of $43.18 matches the actual total of ${checkout_total}")
 
     checkout_page.click_finish()
