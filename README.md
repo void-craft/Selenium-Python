@@ -22,7 +22,8 @@ This Page Object Model (POM) implemented script written in Python Programming La
 #### Saucedemo_Assert - POM
 The code uses the Selenium library to automate a web browser to visit saucedemo website and performs actions such as clicking on buttons and filling out form fields. It also uses the assert keyword to check that the expected total matches the actual total and raise an error if they don't match.
 
-### Magneto_Advanced
+### Project_3
+#### Magneto_Advanced - POM
 The script uses Selenium WebDriver on a demo shopping website to simulate user actions, such as clicking on links, filling in forms, and hovering over images. It also uses the Selenium Select class to interact with dropdown menus and the ActionChains class to perform mouse-over actions. Time.sleep() is used to introduce delays between actions.
 
 ### Google_Performance_Test
