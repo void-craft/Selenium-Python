@@ -25,7 +25,6 @@ mens_page = MensPage(driver)
 comparison_page = ComparisonPage(driver)
 shorts_details_page = ShortsDetailsPage(driver)
 cart_page = CartPage(driver)
-
 def test_magneto():
     main_page.open_magneto_website()
     main_page.maximize_window()
