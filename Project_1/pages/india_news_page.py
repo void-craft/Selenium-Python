@@ -13,11 +13,3 @@ class IndiaNewsPage:
         print("Headlines from India,", now.strftime("%Y-%m-%d %H:%M:%S"))
         for i, headline in enumerate(headlines, 1):
             print(f"{i}. {headline.text}")
-        #return headlines
-
-    #def print_result(self):
-        #headlines = india_news_page.get_headlines()
-       # now = datetime.datetime.now()
-        #print("Headlines from India,", now.strftime("%Y-%m-%d %H:%M:%S"))
-        #for i, headline in enumerate(headlines, 1):
-        #    print(f"{i}. {headline.text}")
