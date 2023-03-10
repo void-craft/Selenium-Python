@@ -12,26 +12,15 @@ class MensPage(BasePage):
         self.comparison_link = (By.XPATH, '//*[@id="maincontent"]/div[2]/div[2]/div/div/div/a')
 
     def filter_by_color(self):
-        color_filter = self.wait_for_element(self.color_filter)
-        color_filter.click()
-        color_picker = self.wait_for_element(self.color_picker)
-        color_picker.click()
-
+        self.click_element(self.color_filter)
+        self.click_element(self.color_picker)
     def add_shorts_to_compare(self):
-        shorts1_locator = self.wait_for_element(self.shorts1_locator)
-        self.action.move_to_element(shorts1_locator).perform()
-
-        shorts1_to_compare = self.wait_for_element(self.shorts1_to_compare)
-        shorts1_to_compare.click()
-
-        shorts2_locator = self.wait_for_element(self.shorts2_locator)
-        self.action.move_to_element(shorts2_locator).perform()
-
-        shorts2_to_compare = self.wait_for_element(self.shorts2_to_compare)
-        shorts2_to_compare.click()
+        self.hover(self.shorts1_locator)
+        self.click_element(self.shorts1_to_compare)
+        self.hover(self.shorts2_locator)
+        self.click_element(self.shorts2_to_compare)
 
     def go_to_comparison_page(self):
-        comparison_link = self.wait_for_element(self.comparison_link)
-        comparison_link.click()
+        self.click_element(self.comparison_link)
 
 

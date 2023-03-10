@@ -7,5 +7,4 @@ class ComparisonPage(BasePage):
         self.shorts_add = (By.XPATH, '//*[@id="product-comparison"]/tbody[1]/tr/td[1]/div[3]/div[1]/form/button/span')
 
     def add_shorts_expansion(self):
-        shorts_add = self.wait_for_element(self.shorts_add)
-        shorts_add.click()
+        self.click_element(self.shorts_add)

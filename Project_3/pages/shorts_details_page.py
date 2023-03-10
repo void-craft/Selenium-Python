@@ -16,21 +16,13 @@ class ShortsDetailsPage(BasePage):
         self.quantity_text = "2"
 
     def add_shorts_to_cart(self):
-        shorts_size = self.wait_for_element(self.shorts_size)
-        shorts_size.click()
-        shorts_color = self.wait_for_element(self.shorts_color)
-        shorts_color.click()
-        shorts_quantity = self.wait_for_element(self.shorts_quantity)
-        shorts_quantity.clear()
-        shorts_quantity.send_keys(self.quantity_text)
-        shorts_add_to_cart = self.wait_for_element(self.shorts_add_to_cart)
-        shorts_add_to_cart.click()
-        time.sleep(3)
+        self.click_element(self.shorts_size)
+        self.click_element(self.shorts_color)
+        self.send_keys_to_element(self.shorts_quantity, self.quantity_text)
+        self.click_element(self.shorts_add_to_cart)
 
     def open_cart(self):
-        show_cart = self.wait_for_element(self.show_cart)
-        show_cart.click()
-        checkout = self.wait_for_element(self.checkout)
-        checkout.click()
+        self.click_element(self.show_cart)
+        self.click_element(self.checkout)
 
 

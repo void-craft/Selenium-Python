@@ -7,5 +7,4 @@ class SalesPage(BasePage):
         self.mens_page = (By.CLASS_NAME, "block-promo.sale-mens")
 
     def go_to_mens_page(self):
-        mens_page = self.wait_for_element(self.mens_page)
-        mens_page.click()
+        self.click_element(self.mens_page)

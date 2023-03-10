@@ -28,37 +28,27 @@ cart_page = CartPage(driver)
 def test_magneto():
     main_page.open_magneto_website()
     main_page.maximize_window()
-    main_page.click_element(main_page.create_account_link)
-
-    email = account_page.generate_random_email()
-
-    account_page.enter_first_name("Void")
-    account_page.enter_last_name("Meow")
-    account_page.enter_email(email)
-    account_page.enter_password("ToughCookie!")
-    account_page.enter_confirm_password("ToughCookie!")
+    main_page.create_account()
+    account_page.enter_first_name()
+    account_page.enter_last_name()
+    account_page.enter_email()
+    account_page.enter_password()
     account_page.click_create_account_button()
-
-    main_page.navigate_to_hoodies()
+    account_page.navigate_to_hoodies()
     hoodies_page.sort_hoodies()
     hoodies_page.add_hoodies_to_favorite()
-
-    main_page.navigate_to_watches()
+    hoodies_page.navigate_to_watches()
     watches_page.add_watch_to_cart()
-
-    main_page.navigate_to_sales()
-
+    watches_page.go_back()
+    watches_page.navigate_to_sales()
     sales_page.go_to_mens_page()
     mens_page.filter_by_color()
     mens_page.add_shorts_to_compare()
     mens_page.go_to_comparison_page()
-
     comparison_page.add_shorts_expansion()
-
     shorts_details_page.add_shorts_to_cart()
+    shorts_details_page.sleep_for_5_seconds()
     shorts_details_page.open_cart()
-
     cart_page.place_order()
     cart_page.get_order_number()
-
     driver.quit()
