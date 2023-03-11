@@ -1,10 +1,10 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from Project_2.pages.base_page import BasePage
 
 
-class CompletePage:
+class CompletePage(BasePage):
     def __init__(self, driver):
+        super().__init__(driver)
         self.driver = driver
         self.first_name_field = (By.ID, "first-name")
         self.last_name_field = (By.ID, "last-name")
@@ -15,40 +15,29 @@ class CompletePage:
         self.total_label = (By.CLASS_NAME, "summary_total_label")
         self.message_text = (By.CLASS_NAME, "complete-header")
 
-    def enter_first_name(self, first_name):
-        field = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.first_name_field))
-        field.click()
-        field.send_keys(first_name)
+    def enter_first_name(self):
+        self.input_text(self.first_name_field, "Void")
 
-    def enter_last_name(self, last_name):
-        field = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.last_name_field))
-        field.click()
-        field.send_keys(last_name)
+    def enter_last_name(self):
+        self.input_text(self.last_name_field, "Cart")
 
-    def enter_postal_code(self, postal_code):
-        field = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.postal_code_field))
-        field.click()
-        field.send_keys(postal_code)
+    def enter_postal_code(self):
+        self.input_text(self.postal_code_field, "33333")
 
     def click_continue(self):
-        button = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.continue_button))
-        button.click()
+        self.click_element(self.continue_button)
 
     def get_subtotal(self):
-        label = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.subtotal_label))
+        label = self.wait_for_element(self.subtotal_label)
         return float(label.text.strip("$"))
 
     def get_total(self):
-        label = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.total_label))
+        label = self.wait_for_element(self.total_label)
         return float(label.text.strip("$"))
 
     def click_finish(self):
-        button = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.finish_button))
-        button.click()
+        self.click_element(self.finish_button)
 
     def get_complete_message(self):
-        return self.driver.find_element(*self.message_text).text
+        return self.wait_for_element(self.message_text).text
 
-# XPATH //*[@id="checkout_complete_container"]/h2
-# complete XPATH /html/body/div/div/div/div[2]/h2
-# Class complete-header

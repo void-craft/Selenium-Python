@@ -1,25 +1,24 @@
 from selenium.webdriver.common.by import By
 from Projects.Project_2.pages.base_page import BasePage
-
 class CartPage(BasePage):
-    CART_ICON = (By.CLASS_NAME, "shopping_cart_link")
-
     def __init__(self, driver):
         super().__init__(driver)
-
-    CHECKOUT_BUTTON = (By.NAME, "checkout")
+        self.cart_icon = (By.CLASS_NAME, "shopping_cart_link")
+        self.checkout_button = (By.NAME, "checkout")
+        self.cart_item = (By.CLASS_NAME, "cart_item")
+        self.inventory_item1_price = (By.XPATH, '//*[@id="cart_contents_container"]/div/div[1]/div[3]/div[2]/div[2]/div')
+        self.inventory_item2_price = (By.XPATH, '//*[@id="cart_contents_container"]/div/div[1]/div[4]/div[2]/div[2]/div')
+        self.cart_quantity = (By.CLASS_NAME, "cart_quantity")
 
     def open_cart(self):
-        self.click(self.CART_ICON)
+        self.click_element(self.cart_icon)
 
-    def checkout(self):
-        self.click(self.CHECKOUT_BUTTON)
+    def click_checkout(self):
+        self.click_element(self.checkout_button)
 
     def calculate_subtotal(self):
-        subtotal = 0
-        items = self.driver.find_elements(By.CLASS_NAME, "cart_item")
-        for item in items:
-            price = float(item.find_element(By.CLASS_NAME, "inventory_item_price").text[1:])
-            quantity = int(item.find_element(By.CLASS_NAME, "cart_quantity").text)
-            subtotal += price * quantity
-        return round(subtotal, 2)
+        item1_price = float(self.wait_for_element(self.inventory_item1_price).text.replace('$', ''))
+        item2_price = float(self.wait_for_element(self.inventory_item2_price).text.replace('$', ''))
+        subtotal = item1_price + item2_price
+        return float(subtotal)
+

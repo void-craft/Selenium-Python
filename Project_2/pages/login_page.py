@@ -7,27 +7,18 @@ class LoginPage(BasePage):
         super().__init__(driver)
         self.driver = driver
         self.url = "https://www.saucedemo.com/"
+        self.username_input = (By.ID, "user-name")
+        self.password_input = (By.ID, "password")
+        self.login_button = (By.ID, "login-button")
 
-    URL = "https://www.saucedemo.com/"
+    def enter_username(self):
+        self.input_text(self.username_input, "standard_user")
 
-    username_input = (By.ID, "user-name")
-    password_input = (By.ID, "password")
-    login_button = (By.ID, "login-button")
-
-    def enter_username(self, username):
-        self.driver.find_element(*self.username_input).send_keys(username)
-
-    def enter_password(self, password):
-        self.driver.find_element(*self.password_input).send_keys(password)
+    def enter_password(self):
+        self.input_text(self.password_input, "secret_sauce")
 
     def click_login(self):
-        self.driver.find_element(*self.login_button).click()
-
-    def login(self, username, password):
-        self.go_to()
-        self.enter_username(username)
-        self.enter_password(password)
-        self.click_login()
+        self.click_element(self.login_button)
 
     def go_to(self):
-        self.driver.get(self.URL)
+        self.driver.get(self.url)
