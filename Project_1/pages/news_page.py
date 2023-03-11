@@ -1,16 +1,14 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as ec
-class NewsPage:
+from Project_1.base_page import BasePage
+class NewsPage(BasePage):
     def __init__(self, driver):
-        self.driver = driver
-        self.wait = WebDriverWait(self.driver, 10)
-    def go_to_world_news_page(self):
-        world_link = self.wait.until(ec.presence_of_element_located((By.LINK_TEXT, "World")))
-        world_link.click()
-    def go_to_asia_news_page(self):
-        asia_link = self.wait.until(ec.presence_of_element_located((By.LINK_TEXT, "Asia")))
-        asia_link.click()
-    def go_to_india_news_page(self):
-        india_link = self.wait.until(ec.presence_of_element_located((By.LINK_TEXT, "India")))
-        india_link.click()
+        super().__init__(driver)
+        self.world_news_locator = (By.LINK_TEXT, "World")
+        self.asia_news_locator = (By.LINK_TEXT, "Asia")
+        self.india_news_locator = (By.LINK_TEXT, "India")
+    def click_world_news_link(self):
+        self.click_element(self.world_news_locator)
+    def click_asia_news_link(self):
+        self.click_element(self.asia_news_locator)
+    def click_india_news_link(self):
+        self.click_element(self.india_news_locator)

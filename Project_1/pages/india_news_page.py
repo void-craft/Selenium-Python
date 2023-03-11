@@ -1,14 +1,14 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as ec
+from Project_1.base_page import BasePage
 import datetime
-class IndiaNewsPage:
+class IndiaNewsPage(BasePage):
     def __init__(self, driver):
-        self.driver = driver
-        self.wait = WebDriverWait(self.driver, 10)
-    def get_headlines(self):
-        headlines_section = self.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, '.lx-stream__feed')))
-        headlines = headlines_section.find_elements(By.CSS_SELECTOR, "h3 a")
+        super().__init__(driver)
+        self.news_feed_locator = (By.CSS_SELECTOR, '.lx-stream__feed')
+        self.headlines_locator = (By.CSS_SELECTOR, "h3 a")
+    def print_headlines(self):
+        headlines_section = self.wait_for_element(self.news_feed_locator)
+        headlines = headlines_section.find_elements(*self.headlines_locator)
         now = datetime.datetime.now()
         print("Headlines from India,", now.strftime("%Y-%m-%d %H:%M:%S"))
         for i, headline in enumerate(headlines, 1):

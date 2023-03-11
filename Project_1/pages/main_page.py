@@ -1,15 +1,21 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as ec
-class MainPage:
+from Project_1.base_page import BasePage
+
+class MainPage(BasePage):
     def __init__(self, driver):
-        self.driver = driver
-        self.wait = WebDriverWait(self.driver, 10)
-    def load_page(self, url):
-        self.driver.get(url)
+        super().__init__(driver)
+        self.url = "https://www.bbc.com"
+        self.reject_cookies_locator = (By.XPATH, "//*[@aria-label='Do not consent']")
+        self.news_tab_locator = (By.XPATH, "//a[text()='News']")
+
+    def open_website(self):
+        self.driver.get(self.url)
+
+    def go_full_screen(self):
+        self.maximize_window()
+
     def reject_cookies(self):
-        reject_button = self.wait.until(ec.presence_of_element_located((By.XPATH, "//*[@aria-label='Do not consent']")))
-        reject_button.click()
-    def go_to_news_page(self):
-        news_tab = self.wait.until(ec.presence_of_element_located((By.XPATH, "//a[text()='News']")))
-        news_tab.click()
+        self.click_element(self.reject_cookies_locator)
+
+    def click_news_tab(self):
+        self.click_element(self.news_tab_locator)
