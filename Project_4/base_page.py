@@ -1,11 +1,12 @@
-import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
+import time
 
 class BasePage:
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 10)
+        self.start_timer = None
 
     def wait_for_element(self, locator):
         element = self.wait.until(ec.visibility_of_element_located(locator))
@@ -26,5 +27,12 @@ class BasePage:
     def maximize_window(self):
         self.driver.maximize_window()
 
-    def sleep_for_5_seconds(self):
-        time.sleep(5)
+    def open_website(self, url):
+        self.driver.get(url)
+
+    def start_time(self):
+        self.start_timer = time.time()
+
+    def end_time(self):
+        end_timer = time.time() - self.start_timer
+        return end_timer

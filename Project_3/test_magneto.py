@@ -13,6 +13,7 @@ from Projects.Project_3.pages.cart_page import CartPage
 
 chrome_options = Options()
 chrome_options.add_experimental_option('detach', True)
+chrome_options.add_argument("--lang=en")
 driver = webdriver.Chrome(options=chrome_options)
 
 account_page = AccountPage(driver)

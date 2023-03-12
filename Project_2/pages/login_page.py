@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
-from Projects.Project_2.pages.base_page import BasePage
-
+from Project_2.pages.base_page import BasePage
 
 class LoginPage(BasePage):
     def __init__(self, driver):
@@ -22,3 +21,10 @@ class LoginPage(BasePage):
 
     def go_to(self):
         self.driver.get(self.url)
+
+    def go_full_screen(self):
+        self.maximize_window()
+
+
+
+

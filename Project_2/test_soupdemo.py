@@ -1,13 +1,14 @@
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
-from Projects.Project_2.pages.login_page import LoginPage
-from Projects.Project_2.pages.products_page import ProductsPage
-from Projects.Project_2.pages.cart_page import CartPage
-from Projects.Project_2.pages.checkout_page import CheckoutPage
-from Projects.Project_2.pages.complete_page import CompletePage
+from Project_2.pages.login_page import LoginPage
+from Project_2.pages.products_page import ProductsPage
+from Project_2.pages.cart_page import CartPage
+from Project_2.pages.checkout_page import CheckoutPage
+from Project_2.pages.complete_page import CompletePage
 
 chrome_options = Options()
 chrome_options.add_experimental_option('detach', True)
+chrome_options.add_argument("--lang=en")
 driver = webdriver.Chrome(options=chrome_options)
 
 login_page = LoginPage(driver)
@@ -18,6 +19,7 @@ complete_page = CompletePage(driver)
 
 def test_soap_demo():
     login_page.go_to()
+    login_page.go_full_screen()
     login_page.enter_username()
     login_page.enter_password()
     login_page.click_login()

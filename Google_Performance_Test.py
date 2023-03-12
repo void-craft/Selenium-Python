@@ -47,7 +47,6 @@ driver.save_screenshot("news.png")
 driver.close()
 driver.switch_to.window(driver.window_handles[0])
 
-
 # opens maps tab, calculates time taken, takes screenshot, closes the tab
 start_time5 = time.time()
 maps_link = driver.find_element(by=By.LINK_TEXT, value="Maps")
