@@ -11,6 +11,9 @@ class BasePage:
         self.action = ActionChains(self.driver)
         self.wait = WebDriverWait(self.driver, 10)
 
+    def open_website(self, url):
+        self.driver.get(url)
+
     def wait_for_element(self, locator):
         element = self.wait.until(ec.visibility_of_element_located(locator))
         return element
@@ -41,6 +44,7 @@ class BasePage:
 
     def maximize_window(self):
         self.driver.maximize_window()
+
 
     def sleep_for_5_seconds(self):
         time.sleep(5)

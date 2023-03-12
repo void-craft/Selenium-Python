@@ -6,10 +6,10 @@ class MainPage(BasePage):
         super().__init__(driver)
         self.url = "https://www.bbc.com"
         self.reject_cookies_locator = (By.XPATH, "//*[@aria-label='Do not consent']")
-        self.news_tab_locator = (By.XPATH, "//a[text()='News']")
+        self.news_tab_locator = (By.XPATH, '//*[@id="orb-header"]/div/nav[2]/ul/li[2]/a/span')
 
-    def open_website(self):
-        self.driver.get(self.url)
+    def open_bbc_website(self):
+        self.open_website(self.url)
 
     def go_full_screen(self):
         self.maximize_window()

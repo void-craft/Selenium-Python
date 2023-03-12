@@ -6,13 +6,14 @@ from Project_1.pages.india_news_page import IndiaNewsPage
 
 chrome_options = Options()
 chrome_options.add_experimental_option('detach', True)
+chrome_options.add_argument("--lang=en")
 driver = webdriver.Chrome(options=chrome_options)
 
 main_page = MainPage(driver)
 news_page = NewsPage(driver)
 india_news_page = IndiaNewsPage(driver)
 def test_bbc_news():
-    main_page.open_website()
+    main_page.open_bbc_website()
     main_page.go_full_screen()
     main_page.reject_cookies()
     main_page.click_news_tab()
